@@ -31,7 +31,6 @@ namespace ConsoleApp6
     {
         static List<FeedbackData> traindata = new List<FeedbackData>();
         static List<FeedbackData> testData = new List<FeedbackData>();
-
         static void AddTrainingData( bool rating , string feedback)
         {
             traindata.Add(new FeedbackData()
