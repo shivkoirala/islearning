@@ -1,3 +1,7 @@
+// npm install grunt
+// crate gruntfile.js in the outside visual studio directory
+// in appsettings.json create the parameters for execution
+// run gruntfile.js this in visual studio task runner
 module.exports = function (grunt) {
     // we want to run the shell command
     // that means command through command prompt
