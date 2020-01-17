@@ -1,0 +1,28 @@
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.feature_extraction import text
+# Step 1 read in to pandas
+data = pd.read_csv("Tweets.csv")
+
+# Step 2 Label[] and Features[]
+airlinelabel = []
+tweettextfeature =[]
+tweetvector=[]
+for index, row in data.iterrows():
+    tweettextfeature.append(row['text'])
+    airlinelabel.append(row['airline'])
+
+# Step 3 Convert the feature in to Vector
+vec = CountVectorizer(stop_words=text.ENGLISH_STOP_WORDS)
+tweetvector=vec.fit_transform(tweettextfeature).toarray()
+
+# Step 4 :- Feed to Multinomial ( Algorithm)
+knbmodel = KNeighborsClassifier(n_neighbors=2 , algorithm='brute')
+knbmodel.fit(tweetvector, airlinelabel)
+
+# Step 5 :- Use the model
+asksomethng =[' Us airways this is bad ']
+vectask= vec.transform(asksomethng)
+print(knbmodel.predict(vectask))
